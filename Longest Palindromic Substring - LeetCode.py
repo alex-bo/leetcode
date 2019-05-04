@@ -14,7 +14,7 @@ class Solution:
         return mx
 
 
-def find_palindrome(s: str, left: int, right: int) -> int:
+def find_palindrome(s: str, left: int, right: int) -> str:
     res = ''
     for j in range(len(s)):
         lft = left - j
