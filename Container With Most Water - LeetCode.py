@@ -5,10 +5,8 @@ from typing import List
 
 class Solution:
 
-    def maxArea(self, height: List[int]) -> int:
-        """
-        Brute force version O(n^2)
-        """
+    def maxAreaBruteForce(self, height: List[int]) -> int:
+        """Brute force version O(n^2)"""
         if not height:
             return 0
         max_area = 0
@@ -17,10 +15,8 @@ class Solution:
                 max_area = max(get_volume(height, left, right), max_area)
         return max_area
 
-    def maxAreaOptimized(self, height: List[int]) -> int:
-        """
-        Optimized version O(n)
-        """
+    def maxArea(self, height: List[int]) -> int:
+        """Optimized version O(n)"""
         if not height:
             return 0
         max_area = 0
@@ -41,7 +37,7 @@ def get_volume(height: List[int], left: int, right: int) -> int:
 
 def test_one(height: List[int], expected: int) -> bool:
     print(height)
-    actual = Solution().maxAreaOptimized(height)
+    actual = Solution().maxArea(height)
     if actual == expected:
         print('OK')
         return True
@@ -55,7 +51,7 @@ def stress_test():
         height = []
         for _ in range(random.randint(2, 10)):
             height.append(random.randint(10, 100))
-        if not test_one(height, Solution().maxArea(height)):
+        if not test_one(height, Solution().maxAreaBruteForce(height)):
             break
         sleep(.1)
 
@@ -70,6 +66,7 @@ def test():
     test_one([1, 2, 4, 3], 4)
     test_one([1, 3, 2, 5, 25, 24, 5], 24)
     test_one([1, 1, 1, 10, 10, 1, 1, 1], 10)
+    test_one([1, 8, 6, 2, 5, 4, 8, 3, 7], 49)
     test_one(
         [28, 342, 418, 485, 719, 670, 878, 752, 662, 994, 654, 504, 929, 660, 424, 855, 922, 744, 600, 229, 728, 33,
          371, 863, 561, 772, 271, 178, 455, 449, 426, 835, 143, 845, 321, 214, 867, 199, 967, 881, 193, 973, 386, 122,
@@ -298,6 +295,5 @@ def test():
 
 
 if __name__ == '__main__':
-    # TODO: submit solution
     test()
-    stress_test()
+    # stress_test()
