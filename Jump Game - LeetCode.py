@@ -3,40 +3,29 @@ from typing import List
 
 class Solution:
 
-    def jump(self, s: List[int]) -> int:
-        """Greedy O(n)"""
-        steps = 0
+    def canJump(self, nums: List[int]) -> bool:
         i = 0
-        while i < (len(s) - 1):
-            steps += 1
+        step = 0
+        while i < (len(nums) - 1):
+            step += 1
+            if nums[i] == 0:
+                return False
             reach_start = i + 1
-            reach_end = reach_start + s[i]
-            if reach_end >= len(s):
+            reach_end = reach_start + nums[i]
+            if reach_end >= len(nums):
                 break
             max_w = 0
             for j in range(reach_start, reach_end):
-                w = j + s[j]
+                w = j + nums[j]
                 if w > max_w:
                     i = j
                     max_w = w
-        return steps
-
-    def jump_dynamic_programing(self, s: List[int]) -> int:
-        """Worst case O(n^2)"""
-        dp = [float('inf')] * len(s)
-        dp[0] = 0
-        for i in range(len(s)):
-            for j in range(i + 1, min(i + s[i] + 1, len(dp))):
-                dp[j] = min(
-                    dp[j],
-                    dp[i] + 1
-                )
-        return int(dp[-1])
+        return True
 
 
-def test_one(s: List[int], expected: int) -> bool:
+def test_one(s: List[int], expected: bool) -> bool:
     print(s)
-    actual = Solution().jump(s)
+    actual = Solution().canJump(s)
     if actual == expected:
         print('OK')
         return True
@@ -46,9 +35,10 @@ def test_one(s: List[int], expected: int) -> bool:
 
 
 def test():
-    test_one([2, 3, 1], 1)
-    test_one([3, 2, 1], 1)
-    test_one([2, 3, 1, 1, 4], 2)
+    test_one([2, 3, 1], True)
+    test_one([3, 2, 1, 0, 4], False)
+    test_one([3, 2, 1], True)
+    test_one([2, 3, 1, 1, 4], True)
     test_one(
         [25000, 24999, 24998, 24997, 24996, 24995, 24994, 24993, 24992, 24991, 24990, 24989, 24988, 24987, 24986, 24985,
          24984, 24983, 24982, 24981, 24980, 24979, 24978, 24977, 24976, 24975, 24974, 24973, 24972, 24971, 24970, 24969,
@@ -1532,9 +1522,8 @@ def test():
          84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57,
          56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29,
          28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0],
-        2)
+        True)
 
 
 if __name__ == '__main__':
     test()
-
