@@ -25,7 +25,7 @@ def find_palindrome(s: str, left: int, right: int) -> str:
     return res
 
 
-def test_one(s: int, expected: str):
+def test_one(s: str, expected: str):
     print(s)
     actual = Solution().longestPalindrome(s)
     if len(actual) == len(expected):
