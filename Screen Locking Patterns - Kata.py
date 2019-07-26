@@ -45,13 +45,6 @@ class Graph:
         self.adj[w].add(v)
 
 
-class VisitRule:
-
-    def __init__(self, can_visit_edge: int, if_visited_edge: int):
-        self.can_visit_edge = can_visit_edge
-        self.if_visited_edge = if_visited_edge
-
-
 def init_graph() -> Graph:
     graph = Graph(9)
     for v in range(graph.vertices_count):
