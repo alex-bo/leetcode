@@ -1,4 +1,5 @@
-from typing import Any
+from typing import Any, Iterable
+
 
 # TODO: implement Graph, Try, Red-Black BST, Union-Find, etc.
 
@@ -99,3 +100,72 @@ class TernarySearchTrie:
             return self.__get(x.mid, key, depth + 1)
 
         return x.value
+
+
+class RedBlackBSTNode:
+
+    def __init__(self, key: Any, value: Any, is_red: bool, size: int):
+        self.key = key
+        self.value = value
+        self.is_red = is_red
+        self.size = size
+
+
+class RedBlackBST:
+
+    def __init__(self):
+        self.root = None
+
+    def __len__(self) -> int:
+        pass
+
+    def __bool__(self) -> bool:
+        pass
+
+    def __getitem__(self, key: Any) -> Any:
+        pass
+
+    def __contains__(self, key: Any) -> bool:
+        pass
+
+    def __setitem__(self, key: Any, value: Any):
+        pass
+
+    def __delitem__(self, key: Any):
+        pass
+
+    def delete_min(self):
+        pass
+
+    def delete_max(self):
+        pass
+
+    def min(self) -> Any:
+        pass
+
+    def max(self) -> Any:
+        pass
+
+    def floor(self, key: Any) -> Any:
+        pass
+
+    def ceiling(self, key: Any) -> Any:
+        pass
+
+    def select(self, k: int) -> Any:
+        pass
+
+    def rank(self, key: Any) -> int:
+        pass
+
+    def keys(self, high: Any = None, low: Any = None) -> Iterable[Any]:
+        pass
+
+    def size(self, high: Any, low: Any) -> int:
+        pass
+
+
+
+
+
+
