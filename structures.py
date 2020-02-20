@@ -114,6 +114,10 @@ class RedBlackBSTNode:
 
 
 class RedBlackBST:
+    """
+    Port of Red-Black Balanced Search Tree from Sedgewick's Algorithms course
+    https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
+    """
 
     def __init__(self):
         self.root = None
