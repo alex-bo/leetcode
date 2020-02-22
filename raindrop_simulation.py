@@ -1,6 +1,6 @@
 import random
 
-from structures import RedBlackBST
+from structures.red_black_bst import RedBlackBST
 
 
 class Node:
