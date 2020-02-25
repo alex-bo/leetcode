@@ -74,7 +74,8 @@ class RedBlackBST:
         """
         if key is None:
             raise KeyError('key is None')
-        return self.__get(self.root, key) or default
+        val = self.__get(self.root, key)
+        return val if val is not None else default
 
     def __get(self, node: RedBlackBSTNode, key: Any) -> Optional[Any]:
         while node:

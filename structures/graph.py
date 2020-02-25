@@ -8,8 +8,15 @@ class Graph:
         self.adj = [set() for _ in range(vertices_count)]
 
     def add_edge(self, v: int, w: int):
+        self.__check_vertex(v)
+        self.__check_vertex(w)
         self.adj[v].add(w)
         self.adj[w].add(v)
+
+    def __check_vertex(self, v: int):
+        if 0 <= v < len(self.adj):
+            return
+        raise Exception('Given vertex is out of graph scope.')
 
 
 class Digraph:

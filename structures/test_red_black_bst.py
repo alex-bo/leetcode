@@ -55,5 +55,10 @@ class RedBlackBSTTest(unittest.TestCase):
         self.assertEqual(50, bst.floor(59))
         self.assertEqual(60, bst.ceiling(59))
 
+    def test__put_zero_value__return_zero_value(self):
+        bst = RedBlackBST()
+        bst[123] = 0
+        self.assertEqual(0, bst[123])
+
 
 
