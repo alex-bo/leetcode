@@ -56,9 +56,9 @@ def main():
     nums_count = random.randint(4000, 4000)
     values = []
     for _ in range(random.randint(4000, 4000)):
-        a = 10  # random.randint(1, nums_count // 2)
+        a = random.randint(3, 3)
         b = a + 1000
-        values.append((a, b, random.randint(1, 10)))
+        values.append((a, b, random.randint(10, 10)))
     test_one(nums_count, values)
 
 

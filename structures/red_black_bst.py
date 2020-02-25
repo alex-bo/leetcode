@@ -413,9 +413,9 @@ class RedBlackBST:
         return self.__rank(key, self.root)
 
     def __iter__(self) -> Iterator[Any]:
-        return iter(self.keys())
+        yield from self.keys()
 
-    def keys(self, low: Any = None, high: Any = None) -> Iterable[Any]:
+    def keys(self, low: Any = None, high: Any = None) -> Iterator[Any]:
         """
         Returns all keys in the symbol table in the given range, as an Iterable.
         :param low: minimum endpoint
@@ -426,21 +426,19 @@ class RedBlackBST:
             low = self.min()
         if high is None:
             high = self.max()
-        queue = []
-        self.__keys(self.root, queue, low, high)
-        return queue
+        yield from self.__keys(self.root, low, high)
 
-    def __keys(self, node: RedBlackBSTNode, queue: list, low: Any, high: Any):
+    def __keys(self, node: RedBlackBSTNode, low: Any, high: Any) -> Iterator[Any]:
         if not node:
             return
         cmplo = self.__compare(low, node.key)
         cmphi = self.__compare(high, node.key)
         if cmplo < 0:
-            self.__keys(node.left, queue, low, high)
+            yield from self.__keys(node.left, low, high)
         if cmplo <= 0 and cmphi >= 0:
-            queue.append(node.key)
+            yield node.key
         if cmphi > 0:
-            self.__keys(node.right, queue, low, high)
+            yield from self.__keys(node.right, low, high)
 
     def size(self, low: Any, high: Any) -> int:
         """

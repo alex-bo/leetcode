@@ -18,11 +18,11 @@ class RedBlackBSTTest(unittest.TestCase):
 
         self.assertTrue(bst)
         self.assertEqual(100, len(bst))
-        self.assertEquals('10', bst.get(10))
-        self.assertEquals('56', bst[56])
+        self.assertEqual('10', bst.get(10))
+        self.assertEqual('56', bst[56])
         self.assertTrue(43 in bst)
         self.assertEqual(list(range(100)), list(bst))
-        self.assertEqual(list(range(100)), bst.keys(0, 99))
+        self.assertEqual(list(range(100)), list(bst.keys(0, 99)))
         self.assertEqual(50, bst.size(0, 49))
 
         for _ in range(10):
@@ -30,11 +30,11 @@ class RedBlackBSTTest(unittest.TestCase):
             bst.delete_max()
 
         self.assertEqual(80, len(bst))
-        self.assertEquals(None, bst.get(9))
-        self.assertEquals('56', bst[56])
+        self.assertEqual(None, bst.get(9))
+        self.assertEqual('56', bst[56])
         self.assertFalse(90 in bst)
         self.assertEqual(list(range(10, 90)), list(bst))
-        self.assertEqual(list(range(10, 90)), bst.keys(0, 99))
+        self.assertEqual(list(range(10, 90)), list(bst.keys(0, 99)))
         self.assertEqual(1, bst.size(0, 10))
         self.assertEqual(10, bst.min())
         self.assertEqual(89, bst.max())
