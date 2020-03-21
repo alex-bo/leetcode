@@ -1,4 +1,4 @@
-from typing import Any, Iterable, Optional, Iterator
+from typing import Any, Optional, Iterator
 
 
 class RedBlackBSTNode:
