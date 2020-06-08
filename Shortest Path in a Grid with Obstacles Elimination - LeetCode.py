@@ -11,10 +11,13 @@ class Solution:
 
 
 def bfs(grid: List[List[int]], k: int) -> int:
+    if len(grid) == 1 and len(grid[0]) == 1:
+        return 0
     visited = {Position(0, 0): k}
-    queue1 = [visited]
+    queue1 = [Position(0, 0)]
     queue2 = []
-    steps = 0
+    steps = 1
+    target = Position(len(grid) - 1, len(grid[0]) - 1)
 
     while queue1:
         pos = queue1.pop()
@@ -29,11 +32,34 @@ def bfs(grid: List[List[int]], k: int) -> int:
                 next_k = visited[pos]
                 if grid[next_pos.i][next_pos.j] == 1:
                     next_k -= 1
-                visited[next_pos] = max(next_k, visited.get(next_pos, 0))
-                if visited[next_pos] > 0:
+                if next_pos == target:
+                    return steps
+                if next_k >= 0 and (next_pos not in visited or visited[next_pos] < visited[pos]):
                     queue2.append(next_pos)
-        steps += 1
+                    visited[next_pos] = next_k
         if not queue1:
             queue1, queue2 = queue2, queue1
+            steps += 1
     return -1
 
+
+def test(grid: List[List[int]], k: int, expected: int):
+    print(grid)
+    print(k)
+    actual = Solution().shortestPath(grid, k)
+    if actual == expected:
+        print('OK')
+    else:
+        print('WRONG! Expected {}, got {}'.format(expected, actual))
+
+
+if __name__ == '__main__':
+    test([[0, 0, 0],
+          [1, 1, 0],
+          [0, 0, 0],
+          [0, 1, 1],
+          [0, 0, 0]], 1, 6)
+    test([[0, 1, 1],
+          [1, 1, 1],
+          [1, 0, 0]], 1, -1)
+    test([[0]], 1, 0)
