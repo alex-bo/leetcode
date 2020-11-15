@@ -27,5 +27,6 @@ def recursive_solution(choosableIntegers: list, desiredTotal: int, cache: dict) 
 
 
 if __name__ == '__main__':
+    # TODO: non-recursive DP solution
     print(10, 0, Solution().canIWin(10, 0))
     print(10, 11, Solution().canIWin(10, 11))
