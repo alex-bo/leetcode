@@ -1,6 +1,6 @@
 from typing import List
 
-from structures import TernarySearchTrie
+from structures.trie import TernarySearchTrie
 
 
 class Solution:
