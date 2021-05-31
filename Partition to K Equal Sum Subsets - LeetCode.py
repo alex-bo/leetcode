@@ -9,6 +9,7 @@ class Solution:
         if nums_sum % k != 0:
             return False
         nums.sort(reverse=True)
+
         # return bottom_up_solution(nums, nums_sum, k)
 
         partition_sum = nums_sum // k
