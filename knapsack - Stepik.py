@@ -40,9 +40,9 @@ def without_repetitions(weight: int, items: List[Item]) -> int:
     bottom_up
     """
     dp = [[0 for _ in range(len(items) + 1)] for _ in range(weight + 1)]
-    for w in range(1, weight + 1):
-        for i, item in enumerate(items):
-            i += 1  # dp matrix is 1-based, first item has index 1, not 0
+    for i, item in enumerate(items):
+        i += 1  # dp matrix is 1-based, first item has index 1, not 0
+        for w in range(1, weight + 1):
             dp[w][i] = dp[w][i - 1]  # optimal capacity w/o current item is default
             if w >= item.weight:
                 dp[w][i] = max(
@@ -86,7 +86,7 @@ def test(func: Callable, expected: int, *args):
 
 
 if __name__ == '__main__':
-    test(with_repetitions, 48)
-    test(with_repetitions_recursive, 48, {})
-    test(without_repetitions, 46)
-    test(without_repetitions_recursive, 46, {})
+    test(with_repetitions, 29790)
+    test(with_repetitions_recursive, 29790, {})
+    test(without_repetitions, 69)
+    test(without_repetitions_recursive, 69, {})
