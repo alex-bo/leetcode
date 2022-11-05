@@ -1,0 +1,28 @@
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        for i in range(len(s) // 2 + len(s) % 2, -1, -1):
+            if is_palindrome(s, i, i + 1):
+                return s[len(s)-1:(i+1)*2 - 1:-1] + s
+            if is_palindrome(s, i, i):
+                return s[len(s)-1:i*2:-1] + s
+        return s[::-1] + s
+
+
+def is_palindrome(s: str, left: int, right: int) -> bool:
+    left_str = s[:left+1]
+    right_str = s[right:][::-1]
+    if len(left_str) > len(right_str):
+        return False
+    return left_str == right_str[len(right_str)-len(left_str):]
+
+
+if __name__ == '__main__':
+    print('abcdcba\n' + Solution().shortestPalindrome('abcdcba'))
+    print('-'*20)
+    print('feabbaef\n' + Solution().shortestPalindrome('abbaef'))
+    print('-'*20)
+    print('aaacecaaa\n' + Solution().shortestPalindrome('aacecaaa'))
+    print('-'*20)
+    print('dcbabcd\n' + Solution().shortestPalindrome('abcd'))
+    print('-'*20)
+    print(Solution().shortestPalindrome('a'*20000 + 'cd' + 'a'*20000))

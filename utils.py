@@ -21,7 +21,7 @@ class CellPrintFormat(enum.Enum):
 
 
 def print_grid(grid: List[List[int]], name: str = None, cell_format: CellPrintFormat = CellPrintFormat.DECIMAL):
-    print('-' * len(grid) + ' ' + (name or '') + ' ' + '-' * len(grid))
+    print('-' * len(grid) * 5 + ' ' + (name or '') + ' ' + '-' * len(grid) * 5)
     for i, row in enumerate(grid):
         if i == 0:
             if cell_format == CellPrintFormat.BINARY:
